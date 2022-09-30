@@ -1,16 +1,18 @@
-// we use the 'ip' module in npm to request IP address of the originating //client
-
-const ip = require('ip');
 const express = require('express');
+const app = express();
 
-var app = express();
+const requestIP = require('request-ip');
 
-app.get("/",function(req,res){
-    res.end("Your IP address is " + ip.address());
-})
 
-const PORT = 3000;
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
-app.listen(PORT, () => {
-    console.log("Server running on port number" + PORT);
+
+app.get('/',  function(req, res) {
+    const clientIp =  requestIP.getClientIp(req)
+
+    res.end("My ip is" + clientIp)
+    
 });
+  
+app.listen(3000, () => console.log(`App listening on port 3000`))
