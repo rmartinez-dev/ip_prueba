@@ -7,8 +7,8 @@ app.use(express.json())
 
 app.get('/getIp', (req, res) => {
 
-    const clientIP = req.headers['x-forwarded-for']?.split(',').shift() || req.socket?.remoteAddress;
-    res.json({ userIP: clientIP })
+    const ipAddresses = req.ip;
+    res.json({ userIP: ipAddresses })
     console.log(ipAddresses)
 
 })
