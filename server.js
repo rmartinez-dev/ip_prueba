@@ -4,9 +4,8 @@ const port = 3000
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-app.use(express.static('./index.html'))
 
-app.get('/', (req, res) => {
+app.get('/getIp', (req, res) => {
 
     const ipAddresses = req.ip.split(":").pop();
     res.json({ userIP: ipAddresses })
