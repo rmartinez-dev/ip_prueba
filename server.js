@@ -7,7 +7,7 @@ app.use(express.json())
 
 app.get('/getIp', (req, res) => {
 
-    const ipAddresses = req.ip.split(":").pop();
+    const ipAddresses = req.ip;
     res.json({ userIP: ipAddresses })
     console.log(ipAddresses)
 
